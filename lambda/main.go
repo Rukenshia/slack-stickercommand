@@ -34,7 +34,8 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (*Respo
 
 	emoteName := values.Get("text")
 
-	allowedStickers := []string{"lpehihi", "lpehype", "lpekill", "lperee", "lpethink", "lperiot"}
+	gifEmotes := []string{"lperiot", "crocofat", "crocobro"}
+	allowedStickers := []string{"lpehihi", "lpehype", "lpekill", "lperee", "lpethink", "lperiot", "crocofat", "crocobro"}
 
 	found := false
 	for _, allowed := range allowedStickers {
@@ -60,7 +61,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (*Respo
 					"text":  emoteName,
 					"emoji": true,
 				},
-				"image_url": fmt.Sprintf("https://in.fkn.space/i/lpe/%s", getFilename(emoteName)),
+				"image_url": fmt.Sprintf("https://in.fkn.space/i/stickers/%s", getFilename(gifEmotes, emoteName)),
 				"alt_text":  fmt.Sprintf("%s emote", emoteName),
 			},
 		},
@@ -82,9 +83,11 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (*Respo
 	return &resp, nil
 }
 
-func getFilename(emoteName string) string {
-	if emoteName == "lperiot" {
-		return fmt.Sprintf("%s.gif", emoteName)
+func getFilename(gifEmotes []string, emoteName string) string {
+	for _, gifEmote := range gifEmotes {
+		if emoteName == gifEmote {
+			return fmt.Sprintf("%s.gif", emoteName)
+		}
 	}
 	return fmt.Sprintf("%s.png", emoteName)
 }

@@ -11,4 +11,4 @@ deploy: clean build
 	sls deploy --verbose
 
 upload-assets:
-	aws s3 sync --delete assets/lpe s3://in.fkn.space/i/lpe/
+	aws s3 sync --delete assets s3://in.fkn.space/i/stickers/
