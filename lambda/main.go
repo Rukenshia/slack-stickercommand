@@ -35,7 +35,7 @@ func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (*Respo
 	emoteName := values.Get("text")
 
 	gifEmotes := []string{"lperiot", "crocofat", "crocobro", "jammies"}
-	allowedStickers := []string{"lpehihi", "lpehype", "lpekill", "lperee", "lpethink", "lperiot", "lpeheart", "crocofat", "crocobro", "jammies"}
+	allowedStickers := []string{"lpehihi", "lpehype", "lpekill", "lperee", "lpethink", "lperiot", "lpeheart", "lpesip", "crocofat", "crocobro", "jammies"}
 
 	found := false
 	for _, allowed := range allowedStickers {
